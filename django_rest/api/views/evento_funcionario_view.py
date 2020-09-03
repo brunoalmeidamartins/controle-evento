@@ -22,3 +22,31 @@ class ParticiparChurrasco(APIView):
             evento_funcionario_service.cadastrar_evento_funcionario(evento_funcionario_novo)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ListarEvento(APIView):
+    def get(self, request, id, format=None):
+        eventos_funcionarios = evento_funcionario_service.listar_evento_funcionarios_idEvento(id)
+        serializer = evento_funcionario_serializer.Evento_FuncionarioSerializer(eventos_funcionarios, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+
+class CancelarParticipacao(APIView):
+    def delete(self, request, format=None):
+        serializer = evento_funcionario_serializer.CancelarParticipacaoSerializer(data=request.data)
+        if serializer.is_valid():
+            evento = serializer.validated_data["evento"]
+            funcionario = serializer.validated_data["funcionario"]
+            evento_funcionario_bd = evento_funcionario_service.listar_evento_funcionario_idEvento_idFuncionario(evento, funcionario)
+            evento_funcionario_service.remover_evento_funcionario(evento_funcionario_bd)
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+
+class CancelarParticipacaoConvidado(APIView):
+    def put(self, request, format=None):
+        serializer = evento_funcionario_serializer.CancelarParticipacaoConvidadoSerializer(data=request.data)
+        if serializer.is_valid():
+            #Arrumar a logica
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        
