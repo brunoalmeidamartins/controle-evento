@@ -24,4 +24,9 @@ class ListarConvidadosSerializer(serializers.ModelSerializer):
         model = Evento_Funcionario
         fields = ('convidado',)
 
+class TotalArrecadadoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Evento_Funcionario
+        fields = ('funcionario', 'convidado', 'funcionario_bebe', 'convidado_bebe')
+
 

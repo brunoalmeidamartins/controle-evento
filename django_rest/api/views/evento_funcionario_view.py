@@ -68,3 +68,10 @@ class ListarConvidados(APIView):
         convidados = evento_funcionario_service.listar_convidados(serializer.data)
         serializer_convidados = funcionario_serializer.FuncionarioSerializer(convidados, many=True)
         return Response(serializer_convidados.data, status=status.HTTP_200_OK)
+
+class TotalArrecadado(APIView):
+    def get(self, request, id, format=None):
+        eventos_funcionarios = evento_funcionario_service.listar_evento_funcionarios_idEvento(id)
+        serializer = evento_funcionario_serializer.TotalArrecadadoSerializer(eventos_funcionarios, many=True)
+        resp = evento_funcionario_service.total_arrecadado(serializer.data)
+        return Response({"valor_arrecadado":resp}, status=status.HTTP_200_OK)

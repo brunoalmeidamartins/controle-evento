@@ -13,10 +13,10 @@ Dado o problema é necessario desenvolver uma aplicação WebApi para consumo do
 * Participar do Churrasco. [*]
 * Cancelar participação do Churrasco. [*]
 * Cancelar participação do convidado no Churrasco. [*]
-* Total Arrecadado.
+* Total Arrecadado.[*]
 * Listar Participantes.[*]
 * Listar Convidados.[*]
-* Total Gasto.
+* Total Gasto.[*]
 * Total Gasto em Comida.[*]
 * Total Gasto em Bebida.[*]
 

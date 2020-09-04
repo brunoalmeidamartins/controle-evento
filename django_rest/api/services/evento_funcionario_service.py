@@ -42,5 +42,28 @@ def listar_convidados(eventos_funcionarios):
     for convidado in obj_convidados:
         vetor_ids_convidados.append(convidado["convidado"])
     return convidado_service.listar_convidados_ids(vetor_ids_convidados)
+
+def total_arrecadado(eventos_funcionarios):
+    obj_ef = json.loads(json.dumps(eventos_funcionarios))
+    valor_com_bebida = 20.00
+    valor_sem_bebida = 10.00
+    valor_total = 0.00
+    for obj in obj_ef:
+        if obj["convidado"] == None:
+            if obj["funcionario_bebe"] == True:
+                valor_total += valor_com_bebida
+            else:
+                valor_total += valor_sem_bebida
+        else:
+            if obj["funcionario_bebe"] == True:
+                valor_total += valor_com_bebida
+            else:
+                valor_total += valor_sem_bebida
+            
+            if obj["convidado_bebe"] == True:
+                valor_total += valor_com_bebida
+            else:
+                valor_total += valor_sem_bebida
+    return valor_total
     
     
