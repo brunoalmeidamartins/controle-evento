@@ -20,3 +20,8 @@ def listar_evento_funcionario_idEvento_idFuncionario(id_evento, id_funcionario):
 
 def remover_evento_funcionario(evento_funcionario):
     evento_funcionario.delete()
+
+def cancelar_participacao_convidado(evento_funcionario):
+    evento_funcionario.convidado = None
+    evento_funcionario.save(force_update=True)
+    return listar_evento_funcionario_idEvento_idFuncionario(evento_funcionario.evento, evento_funcionario.funcionario)

@@ -45,8 +45,12 @@ class CancelarParticipacaoConvidado(APIView):
     def put(self, request, format=None):
         serializer = evento_funcionario_serializer.CancelarParticipacaoConvidadoSerializer(data=request.data)
         if serializer.is_valid():
-            #Arrumar a logica
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            evento = serializer.validated_data["evento"]
+            funcionario = serializer.validated_data["funcionario"]
+            evento_funcionario_bd = evento_funcionario_service.listar_evento_funcionario_idEvento_idFuncionario(evento, funcionario)
+            obj_ef = evento_funcionario_service.cancelar_participacao_convidado(evento_funcionario_bd)
+            serializer_ef = evento_funcionario_serializer.Evento_FuncionarioSerializer(obj_ef)
+            return Response(serializer_ef.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         
