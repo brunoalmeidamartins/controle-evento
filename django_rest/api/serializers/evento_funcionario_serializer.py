@@ -14,7 +14,14 @@ class CancelarParticipacaoConvidadoSerializer(serializers.Serializer):
     evento = serializers.IntegerField()
     funcionario = serializers.IntegerField()
 
-class ListarConvidadosSerializer(serializers.ModelSerializer):
+class ListarParticipantesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Evento_Funcionario
         fields = ('funcionario',)
+
+class ListarConvidadosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Evento_Funcionario
+        fields = ('convidado',)
+
+

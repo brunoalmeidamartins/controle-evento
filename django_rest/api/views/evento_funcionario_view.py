@@ -56,8 +56,15 @@ class CancelarParticipacaoConvidado(APIView):
 class ListarParticipantes(APIView):
     def get(self, request, id, format=None):
         eventos_funcionarios = evento_funcionario_service.listar_evento_funcionarios_idEvento(id)
-        serializer = evento_funcionario_serializer.ListarConvidadosSerializer(eventos_funcionarios, many=True)
+        serializer = evento_funcionario_serializer.ListarParticipantesSerializer(eventos_funcionarios, many=True)
         participantes = evento_funcionario_service.listar_participantes(serializer.data)
         serializer_participantes = funcionario_serializer.FuncionarioSerializer(participantes, many=True)
         return Response(serializer_participantes.data, status=status.HTTP_200_OK)
 
+class ListarConvidados(APIView):
+    def get(self, request, id, format=None):
+        eventos_funcionarios = evento_funcionario_service.listar_evento_funcionarios_idEvento(id)
+        serializer = evento_funcionario_serializer.ListarConvidadosSerializer(eventos_funcionarios, many=True)
+        convidados = evento_funcionario_service.listar_convidados(serializer.data)
+        serializer_convidados = funcionario_serializer.FuncionarioSerializer(convidados, many=True)
+        return Response(serializer_convidados.data, status=status.HTTP_200_OK)

@@ -1,4 +1,4 @@
-from ..services import funcionario_service
+from ..services import funcionario_service, convidado_service
 from ..models import Evento_Funcionario
 from django.http import Http404
 import json
@@ -35,5 +35,12 @@ def listar_participantes(eventos_funcionarios):
     for participante in obj_participantes:
         vetor_ids_participantes.append(participante["funcionario"])
     return funcionario_service.listar_funcionarios_ids(vetor_ids_participantes)
+
+def listar_convidados(eventos_funcionarios):
+    obj_convidados = json.loads(json.dumps(eventos_funcionarios))
+    vetor_ids_convidados = []
+    for convidado in obj_convidados:
+        vetor_ids_convidados.append(convidado["convidado"])
+    return convidado_service.listar_convidados_ids(vetor_ids_convidados)
     
     

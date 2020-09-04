@@ -14,4 +14,5 @@ urlpatterns = [
     path('cancelar_participacao/', evento_funcionario_view.CancelarParticipacao.as_view(), name='cancelar-participacao'),
     path('cancelar_participacao_convidado/', evento_funcionario_view.CancelarParticipacaoConvidado.as_view(), name='cancelar-participacao-convidado'),
     path('listar_participantes/<int:id>', evento_funcionario_view.ListarParticipantes.as_view(), name='listar-participantes'),
+    path('listar_convidados/<int:id>', evento_funcionario_view.ListarConvidados.as_view(), name='listar-convidados'),
 ]

@@ -21,3 +21,7 @@ def editar_convidado(convidado_antigo, convidado_novo):
 
 def remover_convidado(convidado):
     convidado.delete()
+
+def listar_convidados_ids(vetor_id):
+    convidados = Convidado.objects.filter(id__in=vetor_id)
+    return convidados
