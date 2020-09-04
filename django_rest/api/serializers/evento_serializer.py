@@ -10,3 +10,8 @@ class TotalGastoComida(serializers.ModelSerializer):
     class Meta:
         model = Evento
         fields = ('total_gasto_comida',)
+
+class TotalGastoBebida(serializers.ModelSerializer):
+    class Meta:
+        model = Evento
+        fields = ('total_gasto_bebida',)

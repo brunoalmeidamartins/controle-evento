@@ -59,3 +59,9 @@ class TotalGastoComida(APIView):
         evento = evento_service.listar_evento_id(id)
         serializer = evento_serializer.TotalGastoComida(evento)
         return Response(serializer.data, status.HTTP_200_OK)
+
+class TotalGastoBebida(APIView):
+    def get(self, request, id, format=None):
+        evento = evento_service.listar_evento_id(id)
+        serializer = evento_serializer.TotalGastoBebida(evento)
+        return Response(serializer.data, status.HTTP_200_OK)

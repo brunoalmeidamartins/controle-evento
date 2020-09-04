@@ -9,6 +9,7 @@ urlpatterns = [
     path('eventos/', evento_view.EventoList.as_view(), name='evento-list'),
     path('eventos/<int:id>', evento_view.EventoDetalhes.as_view(), name='evento-detalhes'),
     path('total_gasto_comida/<int:id>', evento_view.TotalGastoComida.as_view(), name='total-gasto-comida'),
+    path('total_gasto_bebida/<int:id>', evento_view.TotalGastoBebida.as_view(), name='total-gasto-bebida'),
 
     path('listar_evento/<int:id>', evento_funcionario_view.ListarEvento.as_view(), name='listar-evento'),
     path('participar_churrasco/', evento_funcionario_view.ParticiparChurrasco.as_view(), name='participar-churrasco'),
