@@ -20,3 +20,7 @@ def editar_funcionario(funcionario_antigo, funcionario_novo):
 
 def remover_funcionario(funcionario):
     funcionario.delete()
+
+def listar_funcionarios_ids(vetor_id):
+    funcionarios = Funcionario.objects.filter(id__in=vetor_id)
+    return funcionarios

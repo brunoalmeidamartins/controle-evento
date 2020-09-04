@@ -10,11 +10,11 @@ Dado o problema é necessario desenvolver uma aplicação WebApi para consumo do
 
 
 # EndPoints Necessários
-* Participar do Churrasco.
-* Cancelar participação do Churrasco.
-* Cancelar participação do convidado no Churrasco.
+* Participar do Churrasco. [*]
+* Cancelar participação do Churrasco. [*]
+* Cancelar participação do convidado no Churrasco. [*]
 * Total Arrecadado.
-* Listar Participantes.
+* Listar Participantes.[*]
 * Listar Convidados.
 * Total Gasto.
 * Total Gasto em Comida.

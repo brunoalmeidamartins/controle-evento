@@ -1,5 +1,8 @@
+from ..services import funcionario_service
 from ..models import Evento_Funcionario
 from django.http import Http404
+import json
+
 
 def cadastrar_evento_funcionario(evento_funcionario):
     return Evento_Funcionario.objects.create(evento=evento_funcionario.evento,
@@ -25,3 +28,12 @@ def cancelar_participacao_convidado(evento_funcionario):
     evento_funcionario.convidado = None
     evento_funcionario.save(force_update=True)
     return listar_evento_funcionario_idEvento_idFuncionario(evento_funcionario.evento, evento_funcionario.funcionario)
+
+def listar_participantes(eventos_funcionarios):
+    obj_participantes = json.loads(json.dumps(eventos_funcionarios))
+    vetor_ids_participantes = []
+    for participante in obj_participantes:
+        vetor_ids_participantes.append(participante["funcionario"])
+    return funcionario_service.listar_funcionarios_ids(vetor_ids_participantes)
+    
+    

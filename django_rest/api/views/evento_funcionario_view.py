@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from ..services import evento_funcionario_service
-from ..serializers import evento_funcionario_serializer
+from ..serializers import evento_funcionario_serializer, funcionario_serializer
 from ..entidades import evento_funcionario
 
 class ParticiparChurrasco(APIView):
@@ -53,4 +53,11 @@ class CancelarParticipacaoConvidado(APIView):
             return Response(serializer_ef.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        
+class ListarParticipantes(APIView):
+    def get(self, request, id, format=None):
+        eventos_funcionarios = evento_funcionario_service.listar_evento_funcionarios_idEvento(id)
+        serializer = evento_funcionario_serializer.ListarConvidadosSerializer(eventos_funcionarios, many=True)
+        participantes = evento_funcionario_service.listar_participantes(serializer.data)
+        serializer_participantes = funcionario_serializer.FuncionarioSerializer(participantes, many=True)
+        return Response(serializer_participantes.data, status=status.HTTP_200_OK)
+
