@@ -53,3 +53,9 @@ class EventoDetalhes(APIView):
         evento = evento_service.listar_evento_id(id)
         evento_service.remover_evento(evento)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class TotalGastoComida(APIView):
+    def get(self, request, id, format=None):
+        evento = evento_service.listar_evento_id(id)
+        serializer = evento_serializer.TotalGastoComida(evento)
+        return Response(serializer.data, status.HTTP_200_OK)
