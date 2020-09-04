@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'django_rest',
         'USER':'root',
         'PASSWORD':'senhasecreta',
-        'HOST':'0.0.0.0',
-        'PORT': '3307',
+        'HOST':'mysqlsrv',
+        'PORT': '3306',
     }
 }
 
