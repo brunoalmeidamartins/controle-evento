@@ -8,6 +8,7 @@ urlpatterns = [
     path('convidados/<int:id>', convidado_view.ConvidadoDetalhes.as_view(), name='convidado-detalhes'),
     path('eventos/', evento_view.EventoList.as_view(), name='evento-list'),
     path('eventos/<int:id>', evento_view.EventoDetalhes.as_view(), name='evento-detalhes'),
+    path('total_gasto/<int:id>', evento_view.TotalGasto.as_view(), name='total-gasto'),
     path('total_gasto_comida/<int:id>', evento_view.TotalGastoComida.as_view(), name='total-gasto-comida'),
     path('total_gasto_bebida/<int:id>', evento_view.TotalGastoBebida.as_view(), name='total-gasto-bebida'),
 

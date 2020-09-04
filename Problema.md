@@ -17,8 +17,8 @@ Dado o problema é necessario desenvolver uma aplicação WebApi para consumo do
 * Listar Participantes.[*]
 * Listar Convidados.[*]
 * Total Gasto.
-* Total Gasto em Comida.
-* Total Gasto em Bebida.
+* Total Gasto em Comida.[*]
+* Total Gasto em Bebida.[*]
 
 
 ********
